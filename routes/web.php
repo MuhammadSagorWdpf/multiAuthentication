@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/dashboard', function () {
             return view('admindashboard');
         })->name('admindashboard');
+        Route::get('/table',[HomeController::class,'index'])->name('table');
+        Route::get('/image-form',[HomeController::class,'showForm'])->name('image-form');
+        Route::post('/image',[HomeController::class,'store'])->name('image');
     });
 
     // Doctor dashboard route
